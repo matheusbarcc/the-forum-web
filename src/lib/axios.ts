@@ -1,0 +1,13 @@
+import { env } from "@/env";
+import axios from "axios";
+
+export const api = axios.create({
+  baseURL: env.NEXT_PUBLIC_API_URL,
+})
+
+api.interceptors.request.use(
+  (config) => {
+    config.headers.Authorization = `Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYWIwNDQ2Zi1mNjM4LTQ1YWQtODE0OS01NzUyMDdmYmYwMWMiLCJpYXQiOjE3NTk2OTgzNzF9.tP1_UiHkf6m2wQBCEyCKoqebhyt6GKDo8GEcfVU9qNnrnq9To0XcS4Q03ktjM0rCmFzm08ah8Ne6HHq8ikvw5BTIQP6uElMj2Pow8phFecbc9lwWgCv3-ywCvDQVm3gSVWEVU4Xg4O9ZfSRIRU9nm415zzXLEMznupeT4NKas8wzisGUzFw6Xewi9AZKv1cT82adLUj1bG8-LNxxiq_q17gLTP8yFKa35MhQ-BxOeNyvNgd0nJOt4i8BuClkVZvgg-eN8LQMXeeYf5GqXOs0kQTAghAOG4g9n8mDkKzlYfKnTaDs2I2cUR4IZyvNLHhDiy5GoazA5xNimwAV0I9UYeUnctKMftCgmO8vtwaZrgcBT8n1axTF9YWtipf8uYcfVfIp11pVRO7K-c9MSVFdTmJpLmp1aPnQXNSgKA8pll7b4kb-ClkyIaRrT8EwMS64kmuEEHlHroK2xRyd5iWRufXv7Tdn3PyBMB3fYV_ZMq37N8vufyjvEvcYf9e6gMXN3ASsqs_MqWDNN02UD2yptv9cFaE-I25AJUQgGeoLuErK6ozH8_Ay0a8FxqvUgjKNK2TbSe3lV734dgdT2BXjXPGH4XiCdL3sRJQ8uYRsVW3k4W0thJl_Jnd8GnT4TVt2qWBU8lvIyxBIS6_WuhbZSpS5UBlZVsKs0N56fUWe4Es`;
+    return config
+  }
+);
